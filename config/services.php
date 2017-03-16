@@ -19,20 +19,39 @@ return [
         'secret' => env('MAILGUN_SECRET'),
     ],
 
+    'mandrill' => [
+        'secret' => '',
+    ],
+
     'ses' => [
-        'key' => env('SES_KEY'),
-        'secret' => env('SES_SECRET'),
+        'key'    => '',
+        'secret' => '',
         'region' => 'us-east-1',
     ],
 
-    'sparkpost' => [
-        'secret' => env('SPARKPOST_SECRET'),
+    'stripe' => [
+        'model'  => CivicApp\User::class,
+        'key'    => '',
+        'secret' => '',
     ],
 
-    'stripe' => [
-        'model' => App\User::class,
-        'key' => env('STRIPE_KEY'),
-        'secret' => env('STRIPE_SECRET'),
+    //Socialite
+    /*'facebook' => [
+        'client_id'     => '881604891929928',
+        'client_secret' => '76f656698cc2c9f4a0bc244144531347',
+        'redirect'      => 'http://appcivica.dev:8000/login/Facebook',
+    ],*/
+
+    'facebook' => [
+        'client_id'     => env('FB_ID'),
+        'client_secret' => env('FB_SECRET'),
+        'redirect'      => env('FB_REDIRECT')
+    ],
+
+    'twitter' => [
+        'client_id'     => env('TW_ID'),
+        'client_secret' => env('TW_SECRET'),
+        'redirect'      => env('TW_REDIRECT')
     ],
 
 ];

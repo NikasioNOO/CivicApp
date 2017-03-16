@@ -1,5 +1,68 @@
 <?php
 
+return array(
+    "driver" => "smtp",
+    "host" => "mailtrap.io",
+    "port" => 2525,
+    "from" => array(
+        "address" => "presupuestoparticipativoapp@nuestracordoba.org.ar",
+        "name" => "Nuestra Córdoba"
+    ),
+    "username" => "335219f3254216",
+    "password" => "2c27d22418f5dc",
+    "sendmail" => "/usr/sbin/sendmail -bs",
+    "pretend" => false
+);
+
+return array(
+    "driver" => "smtp",
+    "host" => "smtp.sendgrid.net",
+    "port" => 587,
+    "from" => array(
+        "address" => "nortizolmos@gmail.com",
+        "name" => "Nicolas Ortiz"
+    ),
+    "username" => "Nikasio",
+    "password" => "SG.noocat511",
+    "sendmail" => "/usr/sbin/sendmail -bs",
+    "pretend" => false,
+);
+
+return [
+
+    'driver' => env('MAIL_DRIVER', 'smtp'),
+
+    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+
+    'port' => env('MAIL_PORT', 587),
+
+    'from' => ['address' => null, 'name' => null],
+
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+
+    'username' => env('MAIL_USERNAME'),
+
+    'password' => env('MAIL_PASSWORD'),
+
+    'sendmail' => '/usr/sbin/sendmail -bs',
+
+    'pretend' => false,
+];
+
+/*return array(
+
+    'driver' => 'smtp',
+    'host' => 'smtp.gmail.com',
+    'port' => 587,
+    'from' => array('address' => 'nortizolmos@gmail.com', 'name' => 'CivicApp'),
+    'encryption' => '',
+    'username' => 'nortizolmos@gmail.com',
+    'password' => 'mknaaugxzzkcoskm',   // it's use your google app password
+    'sendmail' => '/usr/sbin/sendmail -bs',
+    'pretend' => false,
+
+);*/
+
 return [
 
     /*
@@ -11,8 +74,7 @@ return [
     | sending of e-mail. You may specify which one you're using throughout
     | your application here. By default, Laravel is setup for SMTP mail.
     |
-    | Supported: "smtp", "mail", "sendmail", "mailgun", "mandrill",
-    |            "ses", "sparkpost", "log"
+    | Supported: "smtp", "mail", "sendmail", "mailgun", "mandrill", "ses", "log"
     |
     */
 
@@ -29,7 +91,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+   'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +117,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => env('MAIL_FROM'), 'name' => env('MAIL_NAME')],
 
     /*
     |--------------------------------------------------------------------------
@@ -68,7 +130,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+ //   'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
     /*
     |--------------------------------------------------------------------------
@@ -108,5 +170,18 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Mail "Pretend"
+    |--------------------------------------------------------------------------
+    |
+    | When this option is enabled, e-mail will not actually be sent over the
+    | web and will instead be written to your application's logs files so
+    | you may inspect the message. This is great for local development.
+    |
+    */
+
+    'pretend' => false,
 
 ];

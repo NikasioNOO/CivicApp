@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateGeoPoints extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,13 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
+        Schema::create('geo_points', function (Blueprint $table) {
+            $table->bigIncrements('id');
+        });
+
+        DB::statement('ALTER TABLE geo_points ADD location POINT' );
+
+        Schema::table('geo_points', function (Blueprint $table) {
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::drop('geo_points');
     }
 }
